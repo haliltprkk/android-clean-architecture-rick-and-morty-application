@@ -1,4 +1,4 @@
-package com.haliltprkk.rickandmortyapplication.ui.theme
+package com.haliltprkk.rickandmortyapplication.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

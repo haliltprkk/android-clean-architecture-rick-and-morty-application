@@ -1,1 +1,1 @@
-# android-clean-architechture-rick-and-morty-application
+# android-clean-architecture-rick-and-morty-application
