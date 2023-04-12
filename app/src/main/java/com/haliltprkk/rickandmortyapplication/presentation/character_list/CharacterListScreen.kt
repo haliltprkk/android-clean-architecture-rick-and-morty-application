@@ -1,26 +1,35 @@
 package com.haliltprkk.rickandmortyapplication.presentation.character_list
 
+import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.haliltprkk.rickandmortyapplication.presentation.character_list.components.CharacterListItem
 
 @Composable
 fun CharacterListScreen(navController: NavController) {
-    return Box(
-        Modifier.fillMaxSize()
-    ) {
-        Text(
-            modifier = Modifier.align(Alignment.Center), text = "Hi There", style = TextStyle(
-                fontSize = 24.sp, color = Color.DarkGray, fontWeight = FontWeight.Bold
-            )
-        )
+    val characterList = listOf("Slow Rick", "Jeff", "Plane Crash Survivor", "Japheth's Eldest Son")
+    val context = LocalContext.current
+    return Box(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            items(characterList) { character ->
+                CharacterListItem(character) {
+                    Toast.makeText(context, character, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
